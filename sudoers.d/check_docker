@@ -1,0 +1,6 @@
+icinga ALL=(root) NOPASSWD: /usr/lib/nagios/plugins/check_docker.sh
+icinga ALL=(root) NOPASSWD: /usr/lib64/nagios/plugins/check_docker.sh
+
+nagios ALL=(root) NOPASSWD: /usr/lib/nagios/plugins/check_docker.sh
+nagios ALL=(root) NOPASSWD: /usr/lib64/nagios/plugins/check_docker.sh
+
