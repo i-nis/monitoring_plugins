@@ -32,7 +32,7 @@ function no_parameters() {
 function usage () {
   local PROG_NAME=$(basename $0)
   local PROG_PATH=$(echo $0 | sed -e 's,[\\/][^\\/][^\\/]*$,,')
-  echo "${PROGNAME}:"
+  echo "${PROG_NAME}:"
   echo "Checks the temperature used by an NVME storage drive."
   echo ""
   echo "  Uso: "
@@ -171,9 +171,9 @@ if [ "${#}" == "0" ]; then
     parameters "${@}"
 fi
 
-DEV=$(echo "${DEVICE}" | sed 's/\/dev\///g' | sed 's/n1//g')
+DEV=$(echo "${DEVICE}" | sed 's/\/dev\/nvme//g' | sed 's/n1//g')
 
-TEMP_S=$(cat /sys/class/nvme/${DEV}/device/nvme/${DEV}/hwmon0/temp1_input)
+TEMP_S=$(cat /sys/class/nvme/nvme${DEV}/device/nvme/nvme${DEV}/hwmon${DEV}/temp1_input)
 TEMP_E=$((${TEMP_S}/1000))
 TEMP=$(echo "scale=2; ${TEMP_S}/1000" | bc -l)
 
