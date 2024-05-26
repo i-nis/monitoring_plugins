@@ -9,6 +9,13 @@
 
 
 
+
+# Default values.
+CRITICAL="100"
+WARNING="80"
+
+
+
 # no_parameters()
 # Función para alertar la falta de parámetros obligatorios.
 #
@@ -165,7 +172,6 @@ if [ "${#}" == "0" ]; then
 fi
 
 DEV=$(echo "${DEVICE}" | sed 's/\/dev\///g' | sed 's/n1//g')
-
 
 TEMP_S=$(cat /sys/class/nvme/${DEV}/device/nvme/${DEV}/hwmon0/temp1_input)
 TEMP_E=$((${TEMP_S}/1000))
