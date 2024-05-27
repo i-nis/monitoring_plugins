@@ -37,7 +37,7 @@ function no_parameters() {
 function usage () {
   local PROG_NAME=$(basename $0)
   local PROG_PATH=$(echo $0 | sed -e 's,[\\/][^\\/][^\\/]*$,,')
-  echo "${PROGNAME}:"
+  echo "${PROG_NAME}:"
   echo "Check the status of Docker container."
   echo ""
   echo "  Uso: "

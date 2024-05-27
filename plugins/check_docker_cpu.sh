@@ -1,11 +1,17 @@
 #!/bin/bash
 #
-# check_docker_cpu.sh: script para verificar el usaro de procesador por un contenedor
+# check_docker_cpu.sh: script para verificar el uso de procesador por un contenedor.
 # Docker.
 #
 # (C) 2023 Martin Andres Gomez Gimenez <mggimenez@nis.com.ar>
 # Distributed under the terms of the GNU General Public License v3
 #
+
+
+
+# Default values.
+CRITICAL="90"
+WARNING="80"
 
 
 
@@ -38,7 +44,7 @@ function no_parameters() {
 function usage () {
   local PROG_NAME=$(basename $0)
   local PROG_PATH=$(echo $0 | sed -e 's,[\\/][^\\/][^\\/]*$,,')
-  echo "${PROGNAME}:"
+  echo "${PROG_NAME}:"
   echo "Check the CPU used by a Docker container."
   echo ""
   echo "  Uso: "

@@ -9,7 +9,6 @@
 
 
 
-
 # Default values.
 CRITICAL="100"
 WARNING="80"
