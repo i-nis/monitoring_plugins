@@ -236,6 +236,67 @@ Check the memory used by a Docker container.
 
 
 
+# check_hdd_temp.sh
+
+Es un programa (script) para verificar para verificar la temperatura utilizada por una unidad de almacenamiento HDD/SSD.
+
+
+## Invocación del programa
+
+Desde una terminal el programa puede invocarse de la siguiente manera:
+
+<pre>
+/usr/lib64/nagios/plugins/check_hdd_temp.sh --device /dev/sda
+</pre>
+
+Una vez ejecutado el script devolverá los siguientes datos:
+
+<pre>
+Temp OK: the /dev/sda drive is at 24°C. | TEMP=24;80;100;0;0
+</pre>
+
+
+## Ayuda en línea
+
+El programa cuenta con una ayuda en línea para permitirle al usuario conocer sus capacidades. La ayuda en línea puede invocarse de la siguiente manera:
+
+<pre>
+~ # /usr/lib64/nagios/plugins/check_hdd_temp.sh --help
+check_hdd_temp.sh:
+Checks the temperature used by an HDD/SSD storage drive.
+
+  Uso: 
+       /usr/lib64/nagios/plugins/check_hdd_temp.sh [-h|--help]
+       /usr/lib64/nagios/plugins/check_hdd_temp.sh [-c|--critical] CRITICAL [-d|--device] HDD/SSD [-w|--warning] WARNING
+
+       --help, -h
+           Show this help.
+
+       --critical, -c
+           Parameter to pass critical temperature in degrees Celsius value.
+
+       CRITICAL
+           Critical temperature in degrees Celsius.
+
+
+       --device, -d
+           Parameter to indicate the HDD/SSD storage unit to monitor.
+
+       HDD/SSD
+           HDD/SSD storage drive, for example /dev/sda.
+
+
+       --warning, -w
+           Parameter to pass warning temperature in degrees Celsius value.
+
+       WARNING
+           Warning temperature in degrees Celsius.
+
+</pre>
+
+
+
+
 # check_nvme_temp.sh
 
 Es un programa (script) para verificar para verificar la temperatura utilizada por una unidad de almacenamiento NVME.

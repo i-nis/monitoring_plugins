@@ -1,0 +1,6 @@
+icinga ALL=(root) NOPASSWD: /usr/lib/nagios/plugins/check_hdd_temp.sh
+icinga ALL=(root) NOPASSWD: /usr/lib64/nagios/plugins/check_hdd_temp.sh
+
+nagios ALL=(root) NOPASSWD: /usr/lib/nagios/plugins/check_hdd_temp.sh
+nagios ALL=(root) NOPASSWD: /usr/lib64/nagios/plugins/check_hdd_temp.sh
+
