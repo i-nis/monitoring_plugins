@@ -65,6 +65,17 @@ function usage () {
 
 
 
+# check_device()
+# Verifica que se trata de un dispositivo especial de bloque.
+function check_device() {
+  if [ ! -b $DEVICE ];then
+    echo "UNKNOWN: ${DEVICE} is not a block special file"
+    exit 3
+  fi
+}
+
+
+
 # parameters()
 # Verifica el correcto pasaje de parámetros.
 #
@@ -168,6 +179,7 @@ if [ "${#}" == "0" ]; then
     exit
   else
     parameters "${@}"
+    check_device "${DEVICE}"
 fi
 
 DEV=$(echo "${DEVICE}" | sed 's/\/dev\/nvme//g' | sed 's/n1//g')
