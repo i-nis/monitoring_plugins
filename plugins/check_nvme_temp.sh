@@ -12,6 +12,7 @@
 # Default values.
 CRITICAL="100"
 WARNING="80"
+PERFDATA="TEMP=0;0;0;0;0"
 
 
 
@@ -61,17 +62,6 @@ function usage () {
   echo "       WARNING"
   echo "           Warning temperature in degrees Celsius."
   echo ""
-}
-
-
-
-# check_device()
-# Verifica que se trata de un dispositivo especial de bloque.
-function check_device() {
-  if [ ! -b $DEVICE ];then
-    echo "UNKNOWN: ${DEVICE} is not a block special file"
-    exit 3
-  fi
 }
 
 
@@ -168,6 +158,17 @@ function status() {
       ;;
   esac
 
+}
+
+
+
+# check_device()
+# Verifica que se trata de un dispositivo especial de bloque.
+function check_device() {
+  if [ ! -b $DEVICE ];then
+    echo "UNKNOWN: ${DEVICE} is not a block special file"
+    status 4
+  fi
 }
 
 
