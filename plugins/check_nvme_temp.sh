@@ -185,7 +185,7 @@ fi
 
 DEV=$(echo "${DEVICE}" | sed 's/\/dev\/nvme//g' | sed 's/n1//g')
 
-TEMP_S=$(cat /sys/class/nvme/nvme${DEV}/device/nvme/nvme${DEV}/hwmon${DEV}/temp1_input)
+TEMP_S=$(cat /sys/class/nvme/nvme${DEV}/device/nvme/nvme${DEV}/hwmon*/temp1_input)
 TEMP_E=$((${TEMP_S}/1000))
 TEMP=$(echo "scale=2; ${TEMP_S}/1000" | bc -l)
 
