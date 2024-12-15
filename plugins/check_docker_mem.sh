@@ -11,6 +11,9 @@
 
 
 
+CRITICAL=85
+WARNING=75
+
 # Función para determinar si docker está instalado.
 #
 docker_installed() {
@@ -192,7 +195,7 @@ MEMORY_USAGE_T=$(cat /sys/fs/cgroup/docker/${ID}*/memory.current)
 MEMORY_INACTIVE_F=$(awk '/^inactive_file/{print $2}' /sys/fs/cgroup/docker/${ID}*/memory.stat)
 MEMORY_USAGE=$((${MEMORY_USAGE_T} - ${MEMORY_INACTIVE_F}))
 
-MEMORY_TOTAL_K=$(cat /sys/fs/cgroup/docker/${ID}*/memory.max)
+MEMORY_TOTAL_K=$(grep MemTotal /proc/meminfo | awk '{print $2}')
 MEMORY_TOTAL=$((${MEMORY_TOTAL_K} * 1024))
 
 MEMORY_CRITICAL=$((${MEMORY_TOTAL} * ${CRITICAL} / 100))
