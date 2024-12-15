@@ -3,8 +3,10 @@
 # check_docker_mem.sh: script para verificar la memoria utilizada por un contenedor
 # Docker.
 #
-# (C) 2023 Martin Andres Gomez Gimenez <mggimenez@nis.com.ar>
+# (C) 2023 - 2024 Martin Andres Gomez Gimenez <mggimenez@nis.com.ar>
 # Distributed under the terms of the GNU General Public License v3
+#
+# Vea https://www.kernel.org/doc/Documentation/cgroup-v2.txt
 #
 
 
@@ -186,11 +188,11 @@ ID="$(docker ps --all --filter name="${NAME}$" --format {{.ID}})"
 MEMORY_DOCKER=$(docker stats --no-stream --format {{.MemUsage}} ${NAME})
 MEMORY_DOCKER_P=$(docker stats --no-stream --format {{.MemPerc}} ${NAME})
 
-MEMORY_USAGE_T=$(cat /sys/fs/cgroup/memory/docker/${ID}*/memory.usage_in_bytes)
-MEMORY_INACTIVE_F=$(awk '/^total_inactive_file/{print $2}' /sys/fs/cgroup/memory/docker/${ID}*/memory.stat)
+MEMORY_USAGE_T=$(cat /sys/fs/cgroup/docker/${ID}*/memory.current)
+MEMORY_INACTIVE_F=$(awk '/^inactive_file/{print $2}' /sys/fs/cgroup/docker/${ID}*/memory.stat)
 MEMORY_USAGE=$((${MEMORY_USAGE_T} - ${MEMORY_INACTIVE_F}))
 
-MEMORY_TOTAL_K=$(grep MemTotal /proc/meminfo | awk '{print $2}')
+MEMORY_TOTAL_K=$(cat /sys/fs/cgroup/docker/${ID}*/memory.max)
 MEMORY_TOTAL=$((${MEMORY_TOTAL_K} * 1024))
 
 MEMORY_CRITICAL=$((${MEMORY_TOTAL} * ${CRITICAL} / 100))
