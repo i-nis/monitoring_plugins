@@ -4,7 +4,7 @@ Monitoring plugins
 [![License](https://img.shields.io/:license-gpl-green.svg)](https://www.gnu.org/licenses/gpl-3.0.txt)
 
 
-Plugins para monitoreo utilizados en NIS.
+Complementos estándar para Icinga, Naemon, Nagios, Shinken, Sensu y otras aplicaciones de monitoreo.
 
 
 [[_TOC_]]
